@@ -50,7 +50,7 @@
  */
 
 const $ = require('cash-dom');
-const createHoverable = require('./widok-hoverable');
+const createHoverable = require('widok-hoverable');
 
 const createSlider = (function () {
   class Slider {
