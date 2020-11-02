@@ -1,0 +1,13 @@
+{
+  "name": "widok-slider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widok-slider.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cash-dom": "^8.1.0",
+    "widok-hoverable": "github:weterynarzfred/widok-hoverable"
+  }
+}
