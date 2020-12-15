@@ -68,6 +68,7 @@ const createSlider = (function () {
       this.isSliding = false; // is slider currently being animated
       this.isDragged = false; // is slider currently being dragged
       this.isEnabled = this.options.isEnabled;
+      this.isVertical = this.options.isVertical;
 
       this.prepareArrows();
       this.prepareSlides();
@@ -168,11 +169,24 @@ const createSlider = (function () {
         width: 100 + '%',
         left: 0,
       });
-      if (!this.options.isVertical) {
-        const weightSum = this.slides.reduce(
-          (prev, curr) => prev + curr.weight,
-          0
+
+      const weightSum = this.slides.reduce(
+        (prev, curr) => prev + curr.weight,
+        0
+      );
+      if (this.options.isVertical) {
+        this.bar.css({
+          height: weightSum * 100 + '%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+        });
+        this.slides.map(slide =>
+          slide.element.css({
+            height: (100 * slide.weight) / weightSum + '%',
+          })
         );
+      } else {
         this.bar.css({
           width: weightSum * 100 + '%',
           display: 'flex',
@@ -381,7 +395,6 @@ const createSlider = (function () {
         for (let i = 0; i < this.slides.length; i++) {
           const slideCenter = this.slides[i].offset + this.slides[i].size / 2;
           const wrapStart = currentPos - this.slideOffset / 2;
-
           if (slideCenter > wrapStart) {
             found = i;
             break;
@@ -447,7 +460,6 @@ const createSlider = (function () {
         const slideSize = slide.checkSize(sliderOffset);
         this.barSize += slideSize;
       });
-      console.log(this.barSize);
       this.applyPosition(0);
 
       if (!this.isVertical) {
@@ -535,7 +547,6 @@ const createSlider = (function () {
       }
 
       this.bar.css(css);
-
       if (this.options.isVertical) {
         css.top = -this.position;
       } else {

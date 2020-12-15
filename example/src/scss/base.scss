@@ -13,11 +13,13 @@ body {
 
 #slider {
   box-shadow: 0 0 0 3px #f55;
-  width: 10rem;
+  width: 90%;
 
   .single-slide {
-    font-size: 3em;
-    height: 10rem;
+    font-size: 6em;
+    font-weight: 700;
+    color: #f55;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
