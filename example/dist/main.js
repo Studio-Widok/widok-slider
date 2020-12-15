@@ -510,8 +510,10 @@ var createSlider = function () {
         this.gutter = this.slides[0].element.outerWidth(true) - this.slides[0].element.outerWidth();
         var sliderOffset = this.isVertical ? this.bar.offset().top : this.bar.offset().left;
         this.slides.map(function (slide) {
-          _this6.barSize += slide.checkSize(sliderOffset);
+          var slideSize = slide.checkSize(sliderOffset);
+          _this6.barSize += slideSize;
         });
+        console.log(this.barSize);
         this.applyPosition(0);
 
         if (!this.isVertical) {
@@ -584,8 +586,14 @@ var createSlider = function () {
           duration = this.options.duration;
         }
 
-        this.slideOffset = this.size - this.slides[this.currentSlideId].size;
-        this.position = this.slides[this.currentSlideId].offset - this.slideOffset / 2;
+        var currentSlide = this.slides[this.currentSlideId];
+        this.position = currentSlide.offset - this.slideOffset / 2;
+
+        if (this.position > this.barSize - this.size) {
+          this.position = this.barSize - this.size;
+          this.slideOffset -= (this.position - this.barSize - this.size) / 2;
+        }
+
         this.slides.forEach(function (slide, index) {
           if (index < _this7.currentSlideId) slide.markAsPrev();else if (index > _this7.currentSlideId) slide.markAsNext();else slide.activate();
         });
@@ -729,10 +737,10 @@ var createSlider = function () {
       value: function checkSize(sliderOffset) {
         if (this.slider.isVertical) {
           this.offset = this.element.offset().top - sliderOffset;
-          this.size = this.content.outerHeight(true);
+          this.size = this.element.outerHeight(true);
         } else {
           this.offset = this.element.offset().left - sliderOffset;
-          this.size = this.content.outerWidth(true);
+          this.size = this.element.outerWidth(true);
         }
 
         return this.size;
