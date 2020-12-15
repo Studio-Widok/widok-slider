@@ -1,6 +1,6 @@
 /**
  * Create a slider. Vertical slider might not work yet.
- * @param {object} optionsextra options
+ * @param {object} options
  *
  * main
  * @param {selector} options.wrap selector of the slider wrap
@@ -67,7 +67,7 @@ const createSlider = (function () {
       this.size = 0; // size of the sizer element
       this.isSliding = false; // is slider currently being animated
       this.isDragged = false; // is slider currently being dragged
-      this.isEnabled = options.isEnabled;
+      this.isEnabled = this.options.isEnabled;
 
       this.prepareArrows();
       this.prepareSlides();
