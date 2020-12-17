@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "cash-dom": "^8.1.0",
-    "widok-hoverable": "github:weterynarzfred/widok-hoverable"
+    "widok-hoverable": "github:studio-widok/widok-hoverable"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -26,8 +26,7 @@
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",
     "webpack": "^5.10.2",
-    "webpack-cli": "^4.2.0",
-    "widok": "github:weterynarzfred/widok"
+    "webpack-cli": "^4.2.0"
   },
   "files": [
     "widok-slider.js"

@@ -1,9 +1,15 @@
 const $ = require('cash-dom');
 const createHoverable = require('widok-hoverable');
+require('widok');
 
 /**
  * @callback onActivate
  * @param {Slide} activatedSlide
+ * @param {Slider} slider
+ */
+/**
+ * @callback onDeactivate
+ * @param {Slide} deactivatedSlide
  * @param {Slider} slider
  */
 
@@ -51,7 +57,7 @@ const createHoverable = require('widok-hoverable');
  * callbacks
  * @property {onActivate} onActivate
  *  callback to be called when a slide activates
- * @property {function} onDeactivate analogous
+ * @property {onDeactivate} onDeactivate analogous
  */
 
 class Slider {
