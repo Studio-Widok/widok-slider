@@ -1,5 +1,5 @@
 import './../scss/base.scss';
-const createSlider = require('./../../../widok-slider');
+import createSlider from './../../../widok-slider';
 
 window.slider = createSlider({
   wrap: '#slider',

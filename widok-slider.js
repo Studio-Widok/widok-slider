@@ -16,7 +16,7 @@ require('widok');
 /**
  * @typedef {Object} options
  * main
- * @property {selector} wrap selector of the slider wrap
+ * @property {string} wrap selector of the slider wrap
  * @property {string} slideSelector default='.single-slide'
  * @property {boolean} isVertical default=false, direction of the slider
  *  selector of a single slide, searched inside wrap
@@ -753,4 +753,4 @@ function createSlider(options) {
   return new Slider(options);
 }
 
-module.exports = createSlider;
+export default createSlider;
