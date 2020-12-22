@@ -1,6 +1,6 @@
-const $ = require('cash-dom');
-const createHoverable = require('widok-hoverable');
-require('widok');
+import $ from 'cash-dom';
+import createHoverable from 'widok-hoverable';
+import widok from 'widok';
 
 /**
  * @callback onActivate
