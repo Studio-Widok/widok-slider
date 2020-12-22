@@ -1,6 +1,6 @@
 import $ from 'cash-dom';
 import createHoverable from 'widok-hoverable';
-import widok from 'widok';
+import 'widok';
 
 /**
  * @callback onActivate
