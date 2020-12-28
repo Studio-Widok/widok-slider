@@ -218,14 +218,14 @@ class Slider {
 
     if (this.arrowNext.length > 0) {
       this.arrowNext.on({
-        click: this.nextSlide.bind(this),
+        click: event => this.nextSlide(event),
         touchstart: event => event.stopPropagation(),
       });
       createHoverable(this.arrowNext);
     }
     if (this.arrowPrev.length > 0) {
       this.arrowPrev.on({
-        click: this.prevSlide.bind(this),
+        click: event => this.prevSlide(event),
         touchstart: event => event.stopPropagation(),
       });
       createHoverable(this.arrowPrev);
@@ -737,7 +737,7 @@ class Bullet {
         .find(this.slider.options.bulletSelector)
         .eq(this.slide.realId);
     }
-    this.element.on('click', this.slide.goTo.bind(this.slide));
+    this.element.on('click', () => this.slide.goTo(this.slide));
     createHoverable(this.element);
   }
 }
