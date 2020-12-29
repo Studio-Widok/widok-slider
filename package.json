@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "cash-dom": "^8.1.0",
-    "widok-hoverable": "github:studio-widok/widok-hoverable"
+    "widok-hoverable": "github:studio-widok/widok-hoverable",
+    "widok-scroll-item": "github:studio-widok/widok-scroll-item",
+    "widok-throttle": "github:studio-widok/widok-throttle"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

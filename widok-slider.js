@@ -1,6 +1,8 @@
 import $ from 'cash-dom';
 import createHoverable from 'widok-hoverable';
-import 'widok';
+import createScrollItem from 'widok-scroll-item';
+import throttle from 'widok-throttle';
+import widok from 'widok';
 
 /**
  * @callback onActivate
@@ -65,6 +67,13 @@ class Slider {
     this.id = ++Slider.lastId;
     this.wrap = $(options.wrap);
     if (this.wrap.length !== 1) return;
+    this.scrollItem = createScrollItem(this.wrap, {
+      onScroll: item => {
+        this.distanceFromCenter = Math.abs(
+          item.offset + item.height / 2 - widok.s - widok.h / 2
+        );
+      },
+    });
 
     this.prepareOptions(options);
     this.currentSlideId = this.options.initialSlide; // id of the current slide
@@ -232,6 +241,7 @@ class Slider {
     }
     $(window).on('keydown', event => {
       if (!this.options.useKeys) return;
+      if (!this.isClosest) return;
       if (
         (!this.options.isVertical && event.which === 39) ||
         (this.options.isVertical && event.which === 40)
@@ -748,9 +758,29 @@ class Bullet {
  *
  * @returns {Object} Slider object
  */
+const sliders = [];
+function findClosest() {
+  let closestDistance = Infinity;
+  let closest;
+  for (const slider of sliders) {
+    slider.isClosest = false;
+    if (slider.distanceFromCenter < closestDistance) {
+      closestDistance = slider.distanceFromCenter;
+      closest = slider;
+    }
+  }
+  if (closest !== undefined) {
+    closest.isClosest = true;
+  }
+}
+
+window.addEventListener('afterLayoutChange', findClosest);
+window.addEventListener('scroll', throttle(100, findClosest));
 
 function createSlider(options) {
-  return new Slider(options);
+  const current = new Slider(options);
+  sliders.push(current);
+  return current;
 }
 
 export default createSlider;
