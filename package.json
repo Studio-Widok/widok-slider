@@ -31,6 +31,12 @@
     "webpack-cli": "^4.3.0"
   },
   "files": [
+    "applyPosition.js",
+    "arrows.js",
+    "drag.js",
+    "prepareSlides.js",
+    "Slide.js",
+    "wheel.js",
     "widok-slider.js"
   ]
 }
