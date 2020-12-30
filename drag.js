@@ -2,8 +2,6 @@ function prepareDrag() {
   if (this.options.touchDrag) {
     this.endDrag = endDrag.bind(this);
     this.onDrag = onDrag.bind(this);
-    this.onMouseMove = onMouseMove.bind(this);
-    this.endMouseMove = endMouseMove.bind(this);
 
     this.wrap.on('touchstart', event => {
       if (!this.isEnabled) return;
@@ -19,6 +17,9 @@ function prepareDrag() {
     });
   }
   if (this.options.mouseDrag) {
+    this.onMouseMove = onMouseMove.bind(this);
+    this.endMouseMove = endMouseMove.bind(this);
+
     this.wrap.on('mousedown', event => {
       if (!this.isEnabled) return;
       event.preventDefault();
