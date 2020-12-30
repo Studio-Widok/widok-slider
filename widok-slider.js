@@ -74,9 +74,6 @@ class Slider {
     this.wrap = $(options.wrap);
     if (this.wrap.length !== 1) return;
 
-    this.__proto__.applyPosition = applyPosition;
-    this.__proto__.handleArrows = handleArrows;
-
     this.scrollItem = createScrollItem(this.wrap, {
       onScroll: item => {
         this.distanceFromCenter = Math.abs(
@@ -189,6 +186,9 @@ class Slider {
     this.applyPosition();
   }
 }
+
+Slider.prototype.applyPosition = applyPosition;
+Slider.prototype.handleArrows = handleArrows;
 
 /**
  * Create a slider. Vertical slider might not work yet.
