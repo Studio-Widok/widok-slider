@@ -25,10 +25,6 @@ function applyPosition(duration) {
   }
   const currentSlide = this.slides[this.currentSlideId];
   this.position = currentSlide.offset - this.slideOffset / 2;
-  if (this.position > this.barSize - this.size) {
-    this.position = this.barSize - this.size;
-    this.slideOffset -= (this.position - this.barSize - this.size) / 2;
-  }
 
   this.slides.forEach((slide, index) => {
     if (index < this.currentSlideId) slide.markAsPrev();
