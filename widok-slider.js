@@ -190,12 +190,6 @@ class Slider {
 Slider.prototype.applyPosition = applyPosition;
 Slider.prototype.handleArrows = handleArrows;
 
-/**
- * Create a slider. Vertical slider might not work yet.
- * @param {options} options
- *
- * @returns {Object} Slider object
- */
 const sliders = [];
 function findClosest() {
   let closestDistance = Infinity;
@@ -215,6 +209,12 @@ function findClosest() {
 window.addEventListener('afterLayoutChange', findClosest);
 window.addEventListener('scroll', throttle(100, findClosest));
 
+/**
+ * Create a slider. Vertical slider might not work yet.
+ * @param {options} options
+ *
+ * @returns {Object} Slider object
+ */
 function createSlider(options) {
   const current = new Slider(options);
   sliders.push(current);
