@@ -8,8 +8,8 @@ function prepareDrag() {
       if (this.options.preventDefaultDrag) event.preventDefault();
       if (this.isSliding) return;
       this.dragStart = {
-        x: event.changedTouches[0].pageX,
-        y: event.changedTouches[0].pageY,
+        x: event.changedTouches[0].screenX,
+        y: event.changedTouches[0].screenY,
       };
       onMoveStart.call(this);
       window.addEventListener('touchend', this.endDrag);
@@ -25,8 +25,8 @@ function prepareDrag() {
       event.preventDefault();
       if (this.isSliding) return;
       this.dragStart = {
-        x: event.pageX,
-        y: event.pageY,
+        x: event.screenX,
+        y: event.screenY,
       };
       onMoveStart.call(this);
       window.addEventListener('mouseup', this.endMouseMove);
@@ -50,16 +50,17 @@ function onMoveStart() {
 
 function onDrag(event) {
   const currentPos = {
-    x: event.changedTouches[0].pageX,
-    y: event.changedTouches[0].pageY,
+    x: event.changedTouches[0].screenX,
+    y: event.changedTouches[0].screenY,
   };
+  console.log(event.changedTouches[0]);
   onMove.call(this, currentPos);
 }
 
 function onMouseMove(event) {
   const currentPos = {
-    x: event.pageX,
-    y: event.pageY,
+    x: event.screenX,
+    y: event.screenY,
   };
   onMove.call(this, currentPos);
 }
@@ -85,8 +86,8 @@ function onMove(currentPos) {
 
 function endDrag(event) {
   const dragEnd = {
-    x: event.changedTouches[0].pageX,
-    y: event.changedTouches[0].pageY,
+    x: event.changedTouches[0].screenX,
+    y: event.changedTouches[0].screenY,
   };
   endMove.call(this, dragEnd);
   window.removeEventListener('touchend', this.endDrag);
@@ -95,8 +96,8 @@ function endDrag(event) {
 
 function endMouseMove(event) {
   const dragEnd = {
-    x: event.pageX,
-    y: event.pageY,
+    x: event.screenX,
+    y: event.screenY,
   };
   endMove.call(this, dragEnd);
   window.removeEventListener('mouseup', this.endMouseMove);
