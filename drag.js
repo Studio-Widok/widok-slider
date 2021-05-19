@@ -107,9 +107,18 @@ function endMove(dragEnd) {
   const partNeededToSlide = 1 / 100;
   this.isDragged = false;
   const axis = this.options.isVertical ? 'y' : 'x';
+  const perpendicularAxis = this.options.isVertical ? 'x' : 'y';
 
   let currentPos = this.slides[this.currentSlideId].offset;
   currentPos -= dragEnd[axis] - this.dragStart[axis];
+
+  if (
+    Math.abs(dragEnd[perpendicularAxis] - this.dragStart[perpendicularAxis]) >
+    Math.abs(dragEnd[axis] - this.dragStart[axis]) * 2
+  ) {
+    this.applyPosition();
+    return;
+  }
 
   const applyFoundSlide = found => {
     this.currentSlideId = found;
