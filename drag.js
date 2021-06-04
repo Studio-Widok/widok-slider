@@ -53,7 +53,6 @@ function onDrag(event) {
     x: event.changedTouches[0].screenX,
     y: event.changedTouches[0].screenY,
   };
-  console.log(event.changedTouches[0]);
   onMove.call(this, currentPos);
 }
 
