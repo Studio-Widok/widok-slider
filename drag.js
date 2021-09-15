@@ -12,9 +12,9 @@ function prepareDrag() {
         y: event.changedTouches[0].screenY,
       };
       onMoveStart.call(this);
-      window.addEventListener('touchend', this.endDrag);
-      window.addEventListener('touchmove', this.onDrag);
-    });
+      window.addEventListener('touchend', this.endDrag, { passive: true });
+      window.addEventListener('touchmove', this.onDrag, { passive: true });
+    }, { passive: true });
   }
   if (this.options.mouseDrag) {
     this.onMouseMove = onMouseMove.bind(this);
@@ -89,8 +89,8 @@ function endDrag(event) {
     y: event.changedTouches[0].screenY,
   };
   endMove.call(this, dragEnd);
-  window.removeEventListener('touchend', this.endDrag);
-  window.removeEventListener('touchmove', this.onDrag);
+  window.removeEventListener('touchend', this.endDrag, { passive: true });
+  window.removeEventListener('touchmove', this.onDrag, { passive: true });
 }
 
 function endMouseMove(event) {

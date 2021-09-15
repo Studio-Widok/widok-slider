@@ -22,7 +22,7 @@ function prepareSlides() {
         .on('touchstart', event => {
           if (!this.isEnabled) return;
           event.stopPropagation();
-        });
+        }, { passive: true });
     } else {
       this.bulletContainer = $(this.options.bulletContainer);
     }
