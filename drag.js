@@ -89,8 +89,8 @@ function endDrag(event) {
     y: event.changedTouches[0].screenY,
   };
   endMove.call(this, dragEnd);
-  window.removeEventListener('touchend', this.endDrag, { passive: true });
-  window.removeEventListener('touchmove', this.onDrag, { passive: true });
+  window.removeEventListener('touchend', this.endDrag);
+  window.removeEventListener('touchmove', this.onDrag);
 }
 
 function endMouseMove(event) {
