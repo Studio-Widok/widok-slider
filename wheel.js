@@ -27,7 +27,7 @@ function prepareWheel() {
           this.applyPosition();
         }
       }
-    });
+    }, { passive: true });
   }
 }
 
