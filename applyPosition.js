@@ -12,6 +12,7 @@ function applyPosition(duration) {
       }
       if (isAdjusted) {
         this.wrap.addClass('adjusting');
+        this.isAdjusting = true;
         this.applyPosition(0);
         setTimeout(() => {
           this.wrap.removeClass('adjusting');
@@ -24,7 +25,7 @@ function applyPosition(duration) {
     duration = this.options.duration;
   }
   const currentSlide = this.slides[this.currentSlideId];
-  this.position = currentSlide.offset - this.slideOffset / 2;
+  this.position = currentSlide.offset + (currentSlide.size - this.size) * this.options.anchor - this.slideOffset / 2;
 
   this.slides.forEach((slide, index) => {
     if (index < this.currentSlideId) slide.markAsPrev();
@@ -41,7 +42,7 @@ function applyPosition(duration) {
     };
   } else {
     css = {
-      transition: `${duration / 1000}s`,
+      transition: `${duration / 1000}s ${this.options.transition}`,
     };
   }
 

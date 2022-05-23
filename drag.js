@@ -69,8 +69,9 @@ function onMove(currentPos) {
   this.lastDrag.values[this.lastDrag.lastSaveId] = currentPos;
   const axis = this.options.isVertical ? 'y' : 'x';
   const diff = currentPos[axis] - this.dragStart[axis];
+  const currentSlide = this.slides[this.currentSlideId];
   this.position =
-    this.slides[this.currentSlideId].offset - diff - this.slideOffset / 2;
+    currentSlide.offset + (currentSlide.size - this.size) * this.options.anchor - diff - this.slideOffset / 2;
 
   if (this.options.isVertical) {
     this.bar.css({

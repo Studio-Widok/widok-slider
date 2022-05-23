@@ -81,6 +81,7 @@ class Slide {
       this.directionToActive = 0;
       if (this.slider.options.onActivate !== undefined) {
         this.slider.options.onActivate.call(this, this, this.slider);
+        this.slider.isAdjusting = false;
       }
     }
   }

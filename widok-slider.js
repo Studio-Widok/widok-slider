@@ -24,24 +24,32 @@ import { prepareDrag } from './drag';
  * @typedef {Object} options
  * main
  * @property {string} wrap selector of the slider wrap
- * @property {string} slideSelector default='.single-slide'
+ * @property {string} slideSelector default = '.single-slide'
  * @property {boolean} isVertical default=false, direction of the slider
  *  selector of a single slide, searched inside wrap
- * @property {number} initialSlide default=0
+ * @property {number} initialSlide default = 0
  *  id of the initially selected slide
- * @property {boolean} loop default=false
- * @property {boolean} slidesAsLinks default=false
+ * @property {boolean} loop default = false
+ * @property {boolean} transition default = 'ease'
+ *  css transition of the slider bar
+ * @property {boolean} slidesAsLinks default = false
  *  clicking on a slide activates it
- * @property {boolean} adjustHeight default=false
+ * @property {boolean} adjustHeight default = false
  *  after switching slides the height of the slider is changed
+ * @property {boolean} anchor default = 0
+ *  proportion of the slide that should be aligned with the container.
+ *  0   - left aligned
+ *  0.5 - center aligned
+ *  1   - right aligned
  *
  * animation
- * @property {number} duration default=300
+ * @property {number} duration default = 300
  *  duration of the sliding animation
- * @property {string} animationType default="slide", 'fade' - fade effect
+ * @property {string} animationType default = "slide", 'fade' - fade effect
+ *  (doesn't work too well)
  *
  * bullets
- * @property {boolean} shouldHaveBullets default=true,
+ * @property {boolean} shouldHaveBullets default = true,
  * @property {string} bulletContainer
  *  if undefined bullet container will get created inside options.wrap with
  *  class .slider-bullet-container
@@ -49,13 +57,14 @@ import { prepareDrag } from './drag';
  *  if undefined bullets will get created with class .slider-bullet
  *
  * controls
- * @property {boolean} mouseDrag default=false
+ * @property {boolean} mouseDrag default = false
  *  allows slider to be dragged with the mouse
- * @property {boolean} touchDrag default=false
+ * @property {boolean} touchDrag default = false
  *  allows slider to be dragged on a touchscreen
- * @property {boolean} preventDefaultDrag default=false
- * @property {boolean} slideOnWheel default=false,
- * @property {boolean} useKeys default=false
+ * @property {boolean} preventDefaultDrag default = false
+ * @property {boolean} slideOnWheel default = false
+ *  (doesn't work very well)
+ * @property {boolean} useKeys default = false
  *  changes slides on arrow keys, can be changed later
  * @property {string} arrowPrev
  *  selector of the up arrow, searched in the whole document
@@ -122,10 +131,12 @@ class Slider {
       preventDefaultDrag: false,
       useKeys: false,
       loop: false,
+      transition: 'ease',
       slidesAsLinks: false,
       adjustHeight: false,
       animationType: 'slide',
       isEnabled: true,
+      anchor: 0,
     };
     for (const optionName in options) {
       this.options[optionName] = options[optionName];
