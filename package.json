@@ -10,25 +10,25 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cash-dom": "^8.1.0",
+    "cash-dom": "^8.1.1",
     "widok-hoverable": "github:studio-widok/widok-hoverable",
     "widok-scroll-item": "github:studio-widok/widok-scroll-item",
     "widok-throttle": "github:studio-widok/widok-throttle"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.7",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^6.2.0",
+    "@babel/core": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
     "file-loader": "^6.2.0",
-    "mini-css-extract-plugin": "^2.1.0",
-    "postcss": "^8.3.5",
-    "postcss-loader": "^6.1.1",
-    "postcss-preset-env": "^6.7.0",
-    "sass": "^1.35.2",
-    "sass-loader": "^12.1.0",
-    "webpack": "^5.45.1",
-    "webpack-cli": "^4.7.2"
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss": "^8.4.14",
+    "postcss-loader": "^7.0.0",
+    "postcss-preset-env": "^7.6.0",
+    "sass": "^1.52.1",
+    "sass-loader": "^13.0.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
   },
   "files": [
     "applyPosition.js",
