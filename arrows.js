@@ -14,8 +14,8 @@ function prepareArrows() {
   }
 
   if (this.arrowNext.length > 0) {
-    this.arrowPrev.on('click', event => this.nextSlide(event));
-    this.arrowPrev[0].addEventListener(
+    this.arrowNext.on('click', event => this.nextSlide(event));
+    this.arrowNext[0].addEventListener(
       'touchstart',
       event => event.stopPropagation(),
       { passive: true }
