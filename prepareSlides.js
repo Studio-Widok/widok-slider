@@ -41,11 +41,21 @@ function prepareSlides() {
       this.slides.push(slide);
     });
   }
-  foundSlides.map((index, element) => {
+  foundSlides.map((_index, element) => {
     let slide = new Slide(element, this);
     slide.element.appendTo(this.bar);
     this.slides.push(slide);
   });
+
+  if (this.options.loop) {
+    for (let i = 0; i < this.slides.length; i++) {
+      if (this.slides[i].id >= (2 * this.slides.length) / 3) {
+        this.slides[i].realId -= (this.slides.length / 3) * 2;
+      } else if (this.slides[i].id >= this.slides.length / 3) {
+        this.slides[i].realId -= this.slides.length / 3;
+      }
+    }
+  }
 
   this.slides.forEach(slide => slide.createBullet());
 

@@ -30,13 +30,6 @@ class Slide {
 
   createBullet() {
     if (this.slider.bulletContainer) {
-      if (this.slider.options.loop) {
-        if (this.id >= (2 * this.slider.slides.length) / 3) {
-          this.realId -= (this.slider.slides.length / 3) * 2;
-        } else if (this.id >= this.slider.slides.length / 3) {
-          this.realId -= this.slider.slides.length / 3;
-        }
-      }
       if (
         !this.slider.options.loop ||
         (this.id >= this.slider.slides.length / 3 &&
