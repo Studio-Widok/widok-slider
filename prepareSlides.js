@@ -18,8 +18,8 @@ function prepareSlides() {
     ) {
       this.bulletContainer = $(document.createElement('div'))
         .addClass('slider-bullet-container')
-        .appendTo(this.wrap)
-        .on('touchstart', event => {
+        .appendTo(this.wrap)[0]
+        .addEventListener('touchstart', event => {
           if (!this.isEnabled) return;
           event.stopPropagation();
         }, { passive: true });

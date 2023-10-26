@@ -3,7 +3,7 @@ function prepareDrag() {
     this.endDrag = endDrag.bind(this);
     this.onDrag = onDrag.bind(this);
 
-    this.wrap.on('touchstart', event => {
+    this.wrap[0].addEventListener('touchstart', event => {
       if (!this.isEnabled) return;
       if (this.options.preventDefaultDrag) event.preventDefault();
       if (this.isSliding) return;
@@ -140,9 +140,9 @@ function endMove(dragEnd) {
 
     const isSlidedEnoughToChange = () => {
       const slidedAmount = dragEnd[axis] - this.dragStart[axis];
-      const amountNedeedToSlide =
+      const amountNeededToSlide =
         this.slides[this.currentSlideId].size * partNeededToSlide;
-      return slidedAmount > amountNedeedToSlide;
+      return slidedAmount > amountNeededToSlide;
     };
 
     if (this.currentSlideId === found) {
@@ -164,9 +164,9 @@ function endMove(dragEnd) {
 
     const isSlidedEnoughToChange = () => {
       const slidedAmount = this.dragStart[axis] - dragEnd[axis];
-      const amountNedeedToSlide =
+      const amountNeededToSlide =
         this.slides[this.currentSlideId].size * partNeededToSlide;
-      return slidedAmount > amountNedeedToSlide;
+      return slidedAmount > amountNeededToSlide;
     };
 
     if (this.currentSlideId === found) {

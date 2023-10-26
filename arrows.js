@@ -14,17 +14,21 @@ function prepareArrows() {
   }
 
   if (this.arrowNext.length > 0) {
-    this.arrowNext.on({
-      click: event => this.nextSlide(event),
-      touchstart: event => event.stopPropagation(),
-    }, { passive: true });
+    this.arrowPrev.on('click', event => this.nextSlide(event));
+    this.arrowPrev[0].addEventListener(
+      'touchstart',
+      event => event.stopPropagation(),
+      { passive: true }
+    );
     createHoverable(this.arrowNext);
   }
   if (this.arrowPrev.length > 0) {
-    this.arrowPrev.on({
-      click: event => this.prevSlide(event),
-      touchstart: event => event.stopPropagation(),
-    }, { passive: true });
+    this.arrowPrev.on('click', event => this.prevSlide(event));
+    this.arrowPrev[0].addEventListener(
+      'touchstart',
+      event => event.stopPropagation(),
+      { passive: true }
+    );
     createHoverable(this.arrowPrev);
   }
 
