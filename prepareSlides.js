@@ -17,8 +17,8 @@ function prepareSlides() {
       this.options.bulletSelector === undefined
     ) {
       this.bulletContainer = $(document.createElement('div'))
-        .addClass('slider-bullet-container')
-        .appendTo(this.wrap)[0]
+        .addClass('slider-bullet-container');
+      this.bulletContainer.appendTo(this.wrap)[0]
         .addEventListener('touchstart', event => {
           if (!this.isEnabled) return;
           event.stopPropagation();
